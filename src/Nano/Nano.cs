@@ -1,9 +1,6 @@
 /*
     Nano v0.13.0
     
-    TESTING BRANCHING
-    
-    
     Nano is a .NET cross-platform micro web framework for building web-based HTTP services and websites.
 
     To find out more, visit the project home page at: https://github.com/AmbitEnergyLabs/Nano
@@ -2773,6 +2770,7 @@ namespace Nano.Web.Core
             {
                 nanoContext.Handled = true;
                 var apiMetadata = new ApiMetadata();
+                apiMetadata.ApiName = nanoContext.NanoConfiguration.ApplicationName.Split('.')[0];
 
                 foreach( MethodRequestHandler methodRequestHandler in nanoContext.NanoConfiguration.RequestHandlers.OfType<MethodRequestHandler>() )
                 {
@@ -3281,6 +3279,9 @@ namespace Nano.Web.Core
 
             /// <summary>The API operations.</summary>
             public IList<OperationMetaData> Operations = new List<OperationMetaData>();
+
+            /// <summary>Name of the API.</summary>
+            public string ApiName;
         }
 
         /// <summary>Model metadata.</summary>
