@@ -29,6 +29,7 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line
     </style>
 </head>
 <body>
+    <div id="apiName"></div>
     <table style="width: 100%;">
         <tr>
             <td><h3 style="font-size: 24px;">Api Explorer v.0.7.0</h3></td>
@@ -201,6 +202,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line
         function getApiMetadataCallback(metadata) {
             console.log(metadata);
 
+            $('#apiName').html('<h1>' + metadata.ApiName + '</h1>');
+            document.title = metadata.ApiName + ' Api Explorer';
+            
             $('#loadingOperations').hide();
 
             var table = $('#operationTable').DataTable({
